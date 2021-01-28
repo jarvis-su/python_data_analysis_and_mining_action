@@ -10,6 +10,7 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 import pandas as pd
+
 """
 代码说明：
 programmer_1: 制作箱线图
@@ -40,7 +41,7 @@ def programmer_1(file_name):
     x = p['fliers'][0].get_xdata()
     y = p['fliers'][0].get_ydata()
     y = np.sort(y)
-    
+
     for i in range(len(x)):
         # 处理临界情况， i=0时
         temp = y[i] - y[i - 1] if i != 0 else -78 / 3
@@ -65,7 +66,7 @@ def programmer_2(file_name):
 
 
 def programmer_3(file_name):
-    dish_profit = file_name  #餐饮菜品盈利数据
+    dish_profit = file_name  # 餐饮菜品盈利数据
     data = pd.read_excel(dish_profit, index_col=u'菜品名')
     data = data[u'盈利'].copy()
     data.sort_values(ascending=False)
@@ -95,8 +96,8 @@ def programmer_4(file_name):
 
 if __name__ == "__main__":
     path = os.getcwd()
-    # programmer_1(path + '/data/catering_sale.xls')
-    # programmer_2(path + '/data/catering_sale.xls')
-    # programmer_3(path + '/data/catering_dish_profit.xls')
-    # programmer_4(path + '/data/catering_sale_all.xls')
+    programmer_1(path + '/data/catering_sale.xls')
+    programmer_2(path + '/data/catering_sale.xls')
+    programmer_3(path + '/data/catering_dish_profit.xls')
+    programmer_4(path + '/data/catering_sale_all.xls')
     pass
